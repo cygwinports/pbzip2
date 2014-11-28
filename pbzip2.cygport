@@ -1,0 +1,21 @@
+NAME="pbzip2"
+VERSION=1.1.3
+RELEASE=1
+CATEGORY="Archive"
+SUMMARY="Parallel BZIP2 de/compressor"
+DESCRIPTION="PBZIP2 is a parallel implementation of the bzip2 block-sorting
+file compressor that uses pthreads and achieves near-linear speedup on SMP
+machines. The output of this version is fully compatible with bzip2."
+HOMEPAGE="http://www.compression.ca/pbzip2/"
+SRC_URI="http://launchpad.net/pbzip2/${VERSION%.*}/${VERSION}/+download/pbzip2-${VERSION}.tar.gz"
+
+src_compile() {
+	lndirs
+	cd ${B}
+	cygmake
+}
+
+src_install() {
+	cd ${B}
+	cyginstall PREFIX=${D}/usr
+}
